@@ -14,7 +14,6 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const storageSitiesList: ILocation[] | null = JSON.parse(localStorage.getItem('CitiesList') || 'null');
-
     if (storageSitiesList && storageSitiesList.length) {
       store.dispatch('loadWeather', storageSitiesList);
     } else store.dispatch('loadMyCity');
