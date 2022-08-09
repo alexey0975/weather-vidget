@@ -2,8 +2,8 @@
   <div class="settings">
     <h1 class="settings__title">Settings</h1>
 
-    <router-link class="action-btn" :to="{ name: 'home' }">
-      <span>Закрыть</span>
+    <router-link class="action-btn" :to="{ name: 'home' }" >
+        <span class="action-btn__inner action-btn__inner_close" />
     </router-link>
 
     <draggable
@@ -19,7 +19,11 @@
       </template>
     </draggable>
 
-    <empty-list v-else />
+    <div v-if="loading && !citiesList.length" class="loader-wrapper">
+      <loader-component />
+    </div>
+
+    <empty-list v-if="!loading && !citiesList.length" />
 
     <search-city />
   </div>
@@ -29,26 +33,29 @@
 import CityItem from '@/components/CityItem.vue';
 import SearchCity from '@/components/SearchCity.vue';
 import EmptyList from '@/components/EmptyList.vue';
+import LoaderComponent from '@/components/LoaderComponent.vue';
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import draggable from 'vuedraggable';
 
 export default defineComponent({
   components: {
-    CityItem, SearchCity, EmptyList, draggable,
+    CityItem, SearchCity, EmptyList, draggable, LoaderComponent,
   },
 
   setup() {
     const store = useStore();
+    const loading = computed(() => store.state.loading);
     const citiesList = computed({
       get() {
-        return store.state.citiesWeather;
+        return store.state.citiesList;
       },
       set(value) {
         store.dispatch('changeOrderCities', value);
       },
     });
     return {
+      loading,
       citiesList,
     };
   },
@@ -74,10 +81,10 @@ export default defineComponent({
     display: flex;
     align-items: center;
     padding: 5px 7px;
-    border: 1px solid #2c3e50;
+    border: 1px solid var(--main-color);
     border-radius: 5px;
     &:not(:last-child) {
-      margin-bottom: 3px;
+      margin-bottom: 8px;
     }
   }
 }

@@ -1,5 +1,6 @@
 export default (speed: number): string => {
-  if (speed >= 0.3 && speed < 1.6) return 'Light air';
+  if (speed < 0.4) return 'Calm';
+  if (speed < 1.6) return 'Light air';
   if (speed < 3.4) return 'Light breeze';
   if (speed < 5.5) return 'Gentle breeze';
   if (speed < 8.0) return 'Moderate breeze';
@@ -10,6 +11,5 @@ export default (speed: number): string => {
   if (speed < 24.5) return 'Strong gale';
   if (speed < 28.5) return 'Storm';
   if (speed < 32.7) return 'Violent storm';
-  if (speed >= 32.7) return 'Hurricane force';
-  return 'Calm';
+  return 'Hurricane force';
 };

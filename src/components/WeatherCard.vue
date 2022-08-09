@@ -58,10 +58,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  .card {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--main-color);
+  }
   .country {
     display: flex;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     &__name {
       margin-right: 15px;
     }
@@ -70,7 +74,7 @@ export default defineComponent({
   .main-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 45px;
+    margin-bottom: 15px;
   }
 
   .temperature {
@@ -94,8 +98,10 @@ export default defineComponent({
     font-size: 16px;
 
     &__item {
+      flex: 0 0 48%;
+
       &:not(:last-child) {
-        margin-right: 20px;
+        margin-right: 2%;
       }
 
       &:nth-last-child(n+3) {
@@ -121,7 +127,7 @@ export default defineComponent({
 
     .pressure {
       position: relative;
-      padding-left: 30px;
+      padding-left: 25px;
 
       &::before {
         position: absolute;

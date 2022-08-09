@@ -1,9 +1,15 @@
 <template>
-  <button class="handle burger"></button>
+  <button class="handle btn">
+    <span class="btn__inner btn__inner_handle" />
+  </button>
+
   <p class="settings__item-name">
     {{city.name}}, {{city.country}}
   </p>
-  <button @click.prevent="remove">Remove</button>
+
+  <button class="btn" @click.prevent="remove" >
+    <span class="btn__inner btn__inner_remove" />
+  </button>
 </template>
 
 <script lang="ts">
@@ -30,19 +36,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  .handle {
+    margin-right: 10px;
+  }
+
   .settings {
     &__item-name {
       margin: 0;
       margin-right: auto;
     }
-  }
-
-  .burger {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    padding: 5px;
-    border: none;
-    background: transparent url('../assets/burger.svg') no-repeat center / contain;
   }
 </style>
