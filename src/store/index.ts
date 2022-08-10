@@ -54,6 +54,8 @@ export default createStore({
       message: '' as string,
     },
 
+    page: 'Home' as 'Home' | 'Settings',
+
     success: false as boolean,
 
     loading: false as boolean,
@@ -63,6 +65,10 @@ export default createStore({
   },
 
   mutations: {
+    changePage(state, page) {
+      state.page = page;
+    },
+
     setLoading(state) {
       state.loading = true;
     },

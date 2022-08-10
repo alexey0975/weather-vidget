@@ -1,20 +1,32 @@
 <template>
-  <small v-if="error.searchStatus" class="search__error">Error: {{ error.message }}</small>
+  <small v-if="error.searchStatus" class="search__error"
+    >Error: {{ error.message }}</small
+  >
 
   <form class="search" @submit.prevent="submit">
     <label for="search" class="search__label">
-      <input class="search__field"
+      <input
+        class="search__field"
         v-model="search"
         id="search"
         type="text"
         name="city"
         placeholder="Enter city..."
-        @focus="fieldFocus"
+        @focus="removeError"
       />
     </label>
 
-    <button :disabled="!search.trim()" class="btn btn_search" type="submit" title="Add...">
-      <span v-if="!loading" class="btn__inner btn__inner_search"></span>
+    <button
+      :disabled="!search.trim()"
+      class="btn btn_search"
+      type="submit"
+      title="Add..."
+    >
+      <span v-if="!loading" class="btn__inner btn__inner_search">
+        <icon-box width="21px" height="21px" viewBox="0 0 21 21">
+          <icon-add />
+        </icon-box>
+      </span>
 
       <loader-component v-else />
     </button>
@@ -22,65 +34,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { useStore } from 'vuex';
+import { defineComponent, ref } from 'vue';
+import useState from '@/hooks.ts/useState';
+import IconAdd from '@/icons/IconAdd.vue';
 import LoaderComponent from './LoaderComponent.vue';
+import IconBox from './IconBox.vue';
 
 export default defineComponent({
-  components: { LoaderComponent },
-  setup() {
-    const store = useStore();
-    const search = ref('');
-    const loading = computed<boolean>(() => store.state.loading);
-    const error = computed(() => store.state.error);
+  components: { LoaderComponent, IconBox, IconAdd },
 
-    const fieldFocus = () => {
-      store.commit('removeError');
-    };
+  setup() {
+    const store = useState();
+    const search = ref('');
+    const {
+      error, loading, loadCity, removeError,
+    } = store;
 
     const submit = () => {
-      store.dispatch('loadCity', search.value);
+      loadCity(search.value);
     };
 
     return {
       error,
       search,
-      submit,
       loading,
-      fieldFocus,
+      removeError,
+      submit,
     };
   },
 });
 </script>
-
-<style lang="scss">
-  .search {
-      display: flex;
-
-    &__label {
-      flex: 1 1 auto;
-      margin-right: 5px;
-    }
-
-    &__field {
-      width: 100%;
-      height: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid var(--main-color);
-      border-radius: 5px;
-    }
-
-    &__btn {
-      padding: 10px 12px;
-      border: 1px solid var(--main-color);
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    &__error {
-      font-weight: bold;
-      color: crimson;
-    }
-  }
-</style>

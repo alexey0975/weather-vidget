@@ -1,0 +1,15 @@
+<template>
+    <g
+      fill="none"
+      fill-rule="evenodd"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      transform="translate(4 6)"
+    >
+      <path d="m.5.5h12" />
+      <path d="m.5 4.5h12" />
+      <path d="m.5 8.5h7" />
+      <path d="m9.5 8.5h4zm2 2v-4z" />
+    </g>
+</template>

@@ -1,0 +1,25 @@
+.empty {
+    padding: 20px 0;
+  
+    &__descr {
+      margin: 0;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+  
+    &__btn {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      font-size: 20px;
+      border: 2px solid $main-color;
+      border-radius: 5px;
+      transition: background-color 200ms linear;
+  
+      &:hover {
+        transform: none;
+        background-color: $main-color;
+        color: #fff;
+      }
+    }
+  }
