@@ -5,7 +5,7 @@ An example of use can be found [here](https://alexey0975.github.io/weather-vidge
 
 ## Usage
 
-This is weather widget. For use it just paste in your web-page in head:
+For use widget just paste in your web-page in head:
 ```
 <script defer="defer" src="https://alexey0975.github.io/weather-vidget/js/app.js"></script>
 ```
@@ -15,7 +15,7 @@ and paste tag:
 ```
 where you want to use it.
 
-## Develpoment
+## Development
 
 Register an account at [OpenWeather](https://openweathermap.org/) and get API_KEY.
 
@@ -43,6 +43,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
