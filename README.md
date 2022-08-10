@@ -5,7 +5,7 @@ An example of use can be found [here](https://alexey0975.github.io/weather-vidge
 
 ## Usage
 
-This is weather widget. For use it just paste in your web-page in head:
+For use widget just paste in your web-page in head:
 ```
 <script defer="defer" src="https://alexey0975.github.io/weather-vidget/js/app.js"></script>
 ```
