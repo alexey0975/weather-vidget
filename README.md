@@ -1,4 +1,4 @@
-# weather-widget
+# Weather-widget
 
 This is weather widget. 
 An example of use can be found [here](https://alexey0975.github.io/weather-vidget/).
