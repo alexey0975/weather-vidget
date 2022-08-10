@@ -1,0 +1,38 @@
+    *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $main-color;
+    background-color: $body-color;
+  }
+  
+  nav {
+    padding: 30px;
+  
+    a {
+      font-weight: bold;
+      color: $main-color;
+  
+      &.router-link-exact-active {
+        color: #42b983;
+      }
+    }
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    cursor: auto;
+  }
+  
+  .container {
+    position: relative;
+    max-width: 310px;
+    padding: 23px;
+    margin: 0 auto;
+  }
