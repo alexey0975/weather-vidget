@@ -44,12 +44,15 @@
           </span>
         </div>
       </li>
+
       <li class="details__item">
         <div class="humidity">{{ city.humidity }}%</div>
       </li>
+
       <li class="details__item">
         <div class="dew-point">{{ city.dewPoint }}&deg;C</div>
       </li>
+
       <li class="details__item">
         <div class="visibility">{{ city.visibility }} km</div>
       </li>
@@ -73,6 +76,7 @@ export default defineComponent({
 
   setup(props) {
     const degWindDirStyle = `transform: rotate(${props.city.degWind + 180}deg);`;
+
     return {
       degWindDirStyle,
     };

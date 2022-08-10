@@ -44,7 +44,7 @@ const setLocalStorage = (list: ICityWeather[]) => {
   localStorage.setItem('CitiesList', JSON.stringify(setList));
 };
 
-const geo = Promise.resolve(navigator.geolocation);
+const geo = navigator.geolocation;
 
 export default createStore({
   state: {
@@ -139,6 +139,7 @@ export default createStore({
       context.commit('setLoading');
       context.commit('removeError');
       context.commit('removeSuccess');
+
       try {
         const weatherList = await Promise.all(citiesList.map(async (city: ILocation) => {
           let weatherResponse = null;
@@ -168,6 +169,7 @@ export default createStore({
       context.commit('setLoading');
       context.commit('removeError');
       context.commit('removeSuccess');
+
       try {
         const weatherResponse = await weatherApi.getWeatherOfName({ city: cityName });
         const { data } = weatherResponse;
@@ -190,6 +192,7 @@ export default createStore({
         context.commit('setLoading');
         context.commit('removeError');
         context.commit('removeSuccess');
+
         try {
           const coords = {
             lat: Math.round(pos.coords.latitude * 100) / 100,
@@ -212,7 +215,7 @@ export default createStore({
         }
       };
 
-      (await geo).getCurrentPosition(success);
+      geo.getCurrentPosition(success);
     },
 
     changeOrderCities(context, list) {

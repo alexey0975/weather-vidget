@@ -21,18 +21,22 @@ export default {
       type: String,
       default: 'box',
     },
+
     width: {
       type: [Number, String],
       default: 18,
     },
+
     height: {
       type: [Number, String],
       default: 18,
     },
+
     fill: {
       type: String,
       default: 'currentColor',
     },
+
     stroke: {
       type: String,
       default: 'none',

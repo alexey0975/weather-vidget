@@ -22,20 +22,18 @@ export default () => {
     },
   });
 
-  const loadApp = (loadCitylist: ILocation[] | null) => {
+  const loadApp = (loadCitylist: ILocation[] | ICityWeather[] | null) => {
     if (loadCitylist && loadCitylist.length) {
       store.dispatch('loadWeather', loadCitylist);
     } else store.dispatch('loadMyCity');
   };
 
-  const removeCity = (id: number) => {
-    store.dispatch('deleteCity', id);
+  const repairApp = () => {
+    loadApp(citiesList.value);
   };
 
-  const repairApp = () => {
-    if (citiesList.value && citiesList.value.length) {
-      store.dispatch('loadWeather', citiesList.value);
-    } else store.dispatch('loadMyCity');
+  const removeCity = (id: number) => {
+    store.dispatch('deleteCity', id);
   };
 
   const resetAll = () => {

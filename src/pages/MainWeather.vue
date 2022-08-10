@@ -19,7 +19,7 @@
 
   <error-component v-if="error.status" />
 
-  <empty-list v-if="!citiesList.length && !loading && !error" />
+  <empty-list v-if="!citiesList.length && !loading && !error.status" />
 </template>
 
 <script lang="ts">
