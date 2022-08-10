@@ -1,4 +1,4 @@
-# weather-widget
+# Weather-widget
 
 This is weather widget. 
 An example of use can be found [here](https://alexey0975.github.io/weather-vidget/).
@@ -15,7 +15,7 @@ and paste tag:
 ```
 where you want to use it.
 
-## Develoment
+## Develpoment
 
 Register an account at [OpenWeather](https://openweathermap.org/) and get API_KEY.
 
