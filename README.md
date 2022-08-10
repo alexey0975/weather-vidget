@@ -15,7 +15,7 @@ and paste tag:
 ```
 where you want to use it.
 
-## Develoment
+## Develpoment
 
 Register an account at [OpenWeather](https://openweathermap.org/) and get API_KEY.
 
