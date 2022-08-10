@@ -4,6 +4,8 @@ const webpack = require('webpack');
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: '/weather-vidget/',
+  filenameHashing: false,
+  productionSourceMap: false,
   configureWebpack: {
     plugins: [
       new webpack.optimize.LimitChunkCountPlugin({
