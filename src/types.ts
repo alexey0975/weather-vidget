@@ -17,16 +17,18 @@ export interface ICityWeather {
   order: number,
   lat: number,
   lon: number,
-  searchMethod: 'Name' | 'Coord',
+  searchMethod: 'Location' | 'Coord',
 }
 
 export interface ILocation {
   name: string,
+  country: string,
   lat: number,
   lon: number,
   id: number
-  searchMethod: 'Name' | 'Coord',
+  searchMethod: 'Location' | 'Coord',
   order: number,
+  searchString?: string,
 }
 
 export interface ICityApi {

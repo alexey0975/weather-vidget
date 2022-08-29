@@ -1,7 +1,7 @@
 <template>
-  <small v-if="error.searchStatus" class="search__error"
-    >Error: {{ error.message }}</small
-  >
+  <small v-if="error.searchStatus" class="search__error">
+    Error: {{ error.message }}
+  </small>
 
   <form class="search" @submit.prevent="submit">
     <label for="search" class="search__label">

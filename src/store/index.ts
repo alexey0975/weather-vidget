@@ -6,7 +6,7 @@ import weatherApi from '@/api/weatherApi';
 import { ICityWeather, ILocation } from '@/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createCityState = (data: any, searchMethod: 'Name' | 'Coord'): ICityWeather => {
+const createCityState = (data: any, searchMethod: 'Location' | 'Coord'): ICityWeather => {
   const [weatherDescr] = data.weather;
   return {
     id: data.id,
@@ -39,6 +39,7 @@ const setLocalStorage = (list: ICityWeather[]) => {
     id: item.id,
     searchMethod: item.searchMethod,
     order: item.order,
+    country: item.country,
   }));
 
   localStorage.setItem('CitiesList', JSON.stringify(setList));
@@ -143,9 +144,11 @@ export default createStore({
       try {
         const weatherList = await Promise.all(citiesList.map(async (city: ILocation) => {
           let weatherResponse = null;
-          const { lat, lon, name } = city;
+          const {
+            lat, lon, name, country,
+          } = city;
 
-          if (city.searchMethod === 'Name') weatherResponse = await weatherApi.getWeatherOfName({ city: name });
+          if (city.searchMethod === 'Location') weatherResponse = await weatherApi.getWeatherOfName({ city: name, countryCode: country });
           if (city.searchMethod === 'Coord') weatherResponse = await weatherApi.getWeatherOfCoord({ lat, lon });
           if (weatherResponse) {
             const { data } = weatherResponse;
@@ -172,10 +175,11 @@ export default createStore({
 
       try {
         const weatherResponse = await weatherApi.getWeatherOfName({ city: cityName });
+
         const { data } = weatherResponse;
         data.order = context.state.totalCities + 1;
 
-        const weather = createCityState(data, 'Name');
+        const weather = createCityState(data, 'Location');
 
         context.commit('addWeather', weather);
         context.commit('updateTotalCities');
